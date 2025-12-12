@@ -35,7 +35,7 @@ package-lock.json
 # --------------------------------
 # FRONTEND (React 19, Vite/CRA)
 # --------------------------------
-# /frontend/.env
+/frontend/.env
 /frontend/node_modules/
 /frontend/.env.local
 /frontend/.env.development.local
@@ -55,7 +55,7 @@ frontend/.DS_Store
 # --------------------------------
 # BACKEND (Laravel 12)
 # --------------------------------
-# /backend/.env
+/backend/.env
 /backend/vendor/
 /backend/node_modules/
 /backend/storage/*.key
