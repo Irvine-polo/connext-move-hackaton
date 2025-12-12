@@ -51,6 +51,82 @@ class SystemDropdownSeeder extends Seeder {
                     'properties' => $dropdown['properties'],
                 ]);
             }
+
+            // create `system` module
+            $module = SystemDropdownModule::create([
+                'label' => 'Move',
+            ]);
+
+            // create `move` module type
+            $moduleType = SystemDropdownModuleType::create([
+                'label' => 'Rider Type',
+                'system_dropdown_module_id' => $module->id,
+            ]);
+
+            // create dropdowns
+            $dropdowns = [
+                ['label' => 'Employee', 'order' => 1],
+                ['label' => 'Non-Employee', 'order' => 2],
+                ['label' => 'Guest', 'order' => 3],
+            ];
+
+            // create dropdowns
+            foreach ($dropdowns as $dropdown) {
+                SystemDropdown::create([
+                    'module' => $module->label,
+                    'type' => $moduleType->label,
+                    'label' => $dropdown['label'],
+                    'order' => $dropdown['order'],
+                ]);
+            }
+
+            // create `transport request status` module type
+            $moduleType = SystemDropdownModuleType::create([
+                'label' => 'Transport Request Status',
+                'system_dropdown_module_id' => $module->id,
+            ]);
+
+            // Pending, Assigned, En Route, Arrived, Completed, Canceled
+            $dropdowns = [
+                ['label' => 'Pending', 'order' => 1],
+                ['label' => 'Assigned', 'order' => 2],
+                ['label' => 'En Route', 'order' => 3],
+                ['label' => 'Arrived', 'order' => 4],
+                ['label' => 'Completed', 'order' => 5],
+                ['label' => 'Canceled', 'order' => 6],
+            ];
+
+            // create dropdowns
+            foreach ($dropdowns as $dropdown) {
+                SystemDropdown::create([
+                    'module' => $module->label,
+                    'type' => $moduleType->label,
+                    'label' => $dropdown['label'],
+                    'order' => $dropdown['order'],
+                ]);
+            }
+
+            // create `vehicle status` module type
+            $moduleType = SystemDropdownModuleType::create([
+                'label' => 'Vehicle Status',
+                'system_dropdown_module_id' => $module->id,
+            ]);
+
+            // Active, Maintenance
+            $dropdowns = [
+                ['label' => 'Active', 'order' => 1],
+                ['label' => 'Maintenance', 'order' => 2],
+            ];
+
+            // create dropdowns
+            foreach ($dropdowns as $dropdown) {
+                SystemDropdown::create([
+                    'module' => $module->label,
+                    'type' => $moduleType->label,
+                    'label' => $dropdown['label'],
+                    'order' => $dropdown['order'],
+                ]);
+            }
         } catch (\Throwable $th) {
             // throw $th;
             $logger->error($th->getMessage());

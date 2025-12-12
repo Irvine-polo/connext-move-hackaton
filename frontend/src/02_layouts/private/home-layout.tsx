@@ -13,6 +13,11 @@ const HomeLayout = () => {
           url: '/',
           icon: FaHouse,
         },
+        {
+          name: 'Vehicles',
+          url: '/vehicles',
+          icon: FaHouse,
+        },
       ],
     },
   ];

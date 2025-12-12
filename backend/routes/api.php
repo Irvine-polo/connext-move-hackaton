@@ -13,6 +13,7 @@ use App\Http\Controllers\System\SystemDropdownModuleController;
 use App\Http\Controllers\System\SystemSettingController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\UserImageController;
+use App\Http\Controllers\Move\MoveTransportRequestController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('auth/login', [AuthController::class, 'loginWithEmail']);
@@ -27,7 +28,10 @@ Route::post('/auth/google-login', [AuthController::class, 'loginWithGoogle']);
 Route::resource('/examples/tasks', ExampleTaskController::class);
 
 // COMMON
-Route::middleware('auth.middleware')->group(function () {});
+Route::middleware('auth.middleware')->group(function () {
+    // Move Transport Requests
+    Route::resource('/move/transport-requests', MoveTransportRequestController::class);
+});
 
 // ADMIN
 Route::middleware('auth.middleware')->group(function () {
