@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Move;
 
-use App\Helpers\DynamicLogger;
-use App\Helpers\QueryHelper;
 use App\Http\Controllers\Controller;
-use App\Models\Move\MoveTransportRequest;
 use Illuminate\Http\Request;
+use App\Helpers\QueryHelper;
+use App\Helpers\DynamicLogger;
+use App\Models\Move\MoveVehicle;
 
-class MoveTransportRequestController extends Controller {
+class MoveVehicleController extends Controller {
     private $logger;
 
     public function __construct() {
@@ -22,7 +22,7 @@ class MoveTransportRequestController extends Controller {
         $queryParams = $request->all();
 
         try {
-            $query = MoveTransportRequest::query();
+            $query = MoveVehicle::query();
             $type = 'paginate';
             QueryHelper::apply($query, $queryParams, $type);
 
@@ -59,7 +59,7 @@ class MoveTransportRequestController extends Controller {
      * Display the specified record.
      */
     public function show($id) {
-        $record = MoveTransportRequest::where('id', $id)->first();
+        $record = MoveVehicle::where('id', $id)->first();
 
         if (!$record) {
             return response()->json([
@@ -75,8 +75,7 @@ class MoveTransportRequestController extends Controller {
      */
     public function store(Request $request) {
         try {
-            $record = MoveTransportRequest::create($request->all());
-
+            $record = MoveVehicle::create($request->all());
             return response()->json($record, 201);
         } catch (\Exception $e) {
             return response()->json([
@@ -91,7 +90,7 @@ class MoveTransportRequestController extends Controller {
      */
     public function update(Request $request, $id) {
         try {
-            $record = MoveTransportRequest::find($id);
+            $record = MoveVehicle::find($id);
 
             if (!$record) {
                 return response()->json([
@@ -100,7 +99,6 @@ class MoveTransportRequestController extends Controller {
             }
 
             $record->update($request->all());
-
             return response()->json($record, 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -115,7 +113,7 @@ class MoveTransportRequestController extends Controller {
      */
     public function destroy($id) {
         try {
-            $record = MoveTransportRequest::find($id);
+            $record = MoveVehicle::find($id);
 
             if (!$record) {
                 return response()->json([
@@ -125,7 +123,6 @@ class MoveTransportRequestController extends Controller {
 
             // Delete the record
             $record->delete();
-
             return response()->json($record, 200);
         } catch (\Exception $e) {
             return response()->json([
