@@ -5,6 +5,7 @@ use App\Http\Controllers\Common\AuthController;
 use App\Http\Controllers\Example\ExampleTaskController;
 use App\Http\Controllers\Mail\MailLogController;
 use App\Http\Controllers\Mail\MailTemplateController;
+use App\Http\Controllers\Move\MoveTransportRequestController;
 use App\Http\Controllers\Rbac\RbacPermissionController;
 use App\Http\Controllers\Rbac\RbacRoleController;
 use App\Http\Controllers\Select\SelectController;
@@ -13,8 +14,9 @@ use App\Http\Controllers\System\SystemDropdownModuleController;
 use App\Http\Controllers\System\SystemSettingController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\UserImageController;
-use App\Http\Controllers\Move\MoveTransportRequestController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Move\MoveVehicleController;
+use App\Http\Controllers\System\SystemLogController;
 
 Route::post('auth/login', [AuthController::class, 'loginWithEmail']);
 Route::post('/2fa/login', [AuthController::class, 'verify2faLogin']);
@@ -31,6 +33,9 @@ Route::resource('/examples/tasks', ExampleTaskController::class);
 Route::middleware('auth.middleware')->group(function () {
     // Move Transport Requests
     Route::resource('/move/transport-requests', MoveTransportRequestController::class);
+
+    // Move Vehicles
+    Route::resource('/move/vehicles', MoveVehicleController::class);
 });
 
 // ADMIN

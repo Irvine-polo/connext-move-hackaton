@@ -30,6 +30,7 @@ import TextareaPage from './01_pages/private/examples/forms/textarea-page';
 import DataTableKanbanPage from './01_pages/private/examples/kanban/kanban-page';
 import HomePage from './01_pages/private/home/home-page';
 import MoveTransportRequestsPage from './01_pages/private/home/transport-requests/transport-requests-page';
+import MoveVehiclesPage from './01_pages/private/home/vehicles/move-vehicles-page';
 import GeneralPage from './01_pages/private/settings/general-page';
 import PasswordPage from './01_pages/private/settings/password/password-page';
 import ProfilePage from './01_pages/private/settings/profile/profile-page';
@@ -63,6 +64,10 @@ const App = () => {
                   {
                     index: true,
                     element: <MoveTransportRequestsPage />,
+                  },
+                  {
+                    path: 'vehicles',
+                    element: <MoveVehiclesPage />,
                   },
                 ],
               },
