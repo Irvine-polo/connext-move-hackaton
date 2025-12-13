@@ -89,7 +89,7 @@ const DriversHomePage = () => {
                     En route
                   </span>
                 </div>
-                <p className="text-sm text-gray-600">Engineering</p>
+                <p className="text-sm text-gray-600">Passengers: 5</p>
               </div>
             </div>
 
@@ -158,13 +158,13 @@ const DriversHomePage = () => {
             </div>
 
             <div className="flex gap-2 pt-2">
-              <Button className="flex-1" variant="secondary">
+              {/* <Button className="flex-1" variant="secondary">
                 <FaPhone /> Call Passenger
               </Button>
               <Button className="flex-1">
                 {' '}
                 <FaMap /> Navigate
-              </Button>
+              </Button> */}
             </div>
 
             {/* ARRIVED DIALOG */}
@@ -199,11 +199,18 @@ const DriversHomePage = () => {
                     className="w-full rounded-md border p-2"
                   />
                 </div>
-                <div className="space-y-4 p-2 py-4">
+                <div className="space-y-4 p-2">
                   <label className="text-sm font-semibold">Arrival Date</label>
                   <input type="date" className="w-full rounded-md border p-2" />
                   <label className="text-sm font-semibold">Arrival Time</label>
                   <input type="time" className="w-full rounded-md border p-2" />
+                </div>
+                <div className="space-y-4 p-2 py-4">
+                  <label className="text-sm font-semibold">Remarks</label>
+                  <textarea
+                    placeholder="Remarks (optional)"
+                    className="w-full rounded-md border p-2"
+                  />
                 </div>
                 <div className="flex justify-end gap-2 p-2">
                   <DialogClose asChild>
@@ -229,9 +236,64 @@ const DriversHomePage = () => {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>Upcoming Today</CardTitle>
-            <span className="cursor-pointer rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700 hover:bg-green-200">
-              View All
-            </span>
+            <Dialog>
+              <DialogTrigger asChild>
+                <span className="cursor-pointer rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700 hover:bg-green-200">
+                  View All
+                </span>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>All Items</DialogTitle>
+                </DialogHeader>
+                <Card className="m-2">
+                  <div className="flex items-center gap-3 p-5">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-600 font-semibold text-white">
+                      LC
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-bold">Lerma Carbon</p>
+                      <p className="text-sm text-gray-600">Passengers: 0</p>
+                      <p className="text-xs text-gray-500">
+                        Connext Entec1 → SM Clark
+                      </p>
+                    </div>
+                    <p className="text-sm font-semibold">5:30 PM</p>
+                  </div>
+                </Card>
+                <Card className="m-2">
+                  <div className="flex items-center gap-3 p-5">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-600 font-semibold text-white">
+                      JD
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-bold">John Doe</p>
+                      <p className="text-sm text-gray-600">Passengers: 5</p>
+                      <p className="text-xs text-gray-500">
+                        Marriott Clark → NAIA Terminal 3
+                      </p>
+                    </div>
+                    <p className="text-sm font-semibold">6:00 PM</p>
+                  </div>
+                </Card>
+
+                <Card className="m-2">
+                  <div className="flex items-center gap-3 p-5">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-600 font-semibold text-white">
+                      JDC
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-bold">Juan Dela Cruz</p>
+                      <p className="text-sm text-gray-600">Passengers: 5</p>
+                      <p className="text-xs text-gray-500">
+                        Marriott Clark → NAIA Terminal 3
+                      </p>
+                    </div>
+                    <p className="text-sm font-semibold">6:15 PM</p>
+                  </div>
+                </Card>
+              </DialogContent>
+            </Dialog>
           </CardHeader>
           <CardBody>
             <div className="flex items-center gap-3">
@@ -240,7 +302,7 @@ const DriversHomePage = () => {
               </div>
               <div className="flex-1">
                 <p className="font-bold">Michael Johnson</p>
-                <p className="text-sm text-gray-600">Guest — Acme Corp</p>
+                <p className="text-sm text-gray-600">Passengers: 1</p>
                 <p className="text-xs text-gray-500">
                   Marriott Clark → NAIA Terminal 3
                 </p>
@@ -292,6 +354,14 @@ const DriversHomePage = () => {
                     Departure Time
                   </label>
                   <input type="time" className="w-full rounded-md border p-2" />
+                </div>
+
+                <div className="space-y-4 p-2 py-4">
+                  <label className="text-sm font-semibold">Remarks</label>
+                  <textarea
+                    placeholder="Remarks (optional)"
+                    className="w-full rounded-md border p-2"
+                  />
                 </div>
 
                 <div className="flex justify-end gap-2 p-2">
