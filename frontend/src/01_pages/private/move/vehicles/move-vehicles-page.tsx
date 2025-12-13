@@ -29,7 +29,7 @@ const MoveVehiclesPage = () => {
   // Tanstack query hook for pagination
   const moveVehiclesPagination = useTanstackPaginateQuery<MoveVehicle>({
     endpoint: '/move/vehicles',
-    defaultSort: '-id',
+    defaultSort: 'vehicle_name',
   });
 
   // Table column definitions
